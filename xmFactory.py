@@ -5,6 +5,7 @@ __date__ = '2018年5月10日'
 
 import crawBase
 import crawDi81
+import  crawMzitu
 
 class FactoryBase:
     def __init__(self):
@@ -17,3 +18,10 @@ class FactoryDi81:
 
     def creatDi81(self):
         return crawDi81.CrawDi81()
+
+class FactoryMzitu:
+    def __init__(self):
+        pass
+
+    def creatMzitu(self):
+        return crawMzitu.CrawMzitu()
