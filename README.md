@@ -1,6 +1,6 @@
 # 利用python爬取一些网站的妹子图片
 
-本项目主要用于一些网站的妹子图片爬取，利用工厂模式编写，方便日后扩展。目前为初级版本，目前仅仅可以爬取 [di81美女网](http://di81.com/) 的图片，还有许多需要改进的地方，如免费代理模块未做可扩展处理、mongoDb安全性处理模块。该小项目会不定时更新，欢迎star
+本项目主要用于一些网站的妹子图片爬取，利用工厂模式编写，方便日后扩展。目前为初级版本，目前仅仅可以爬取 [di81美女网](http://di81.com/) 、[mzitu](http://www.mzitu.com/) 的图片，还有许多需要改进的地方，如免费代理模块未做可扩展处理、mongoDb安全性处理模块。该小项目会不定时更新，欢迎star
 详细介绍，请看我的博客：https://blog.csdn.net/linhai1028/article/details/80280674
 
 ------
@@ -9,7 +9,11 @@
 
 httpProxy.py 模块爬取网络上的免费代理ip网站，并验证可用后入库，而后进行实时验证。
 
-crawBase以及其他craw*模块 可理解为工厂模式中的产品模块，主要利用requests做请求，lxml做页面分析。
+crawBase.py 工厂模式中的产品模块的基类模块，主要利用requests做请求，lxml做页面分析。
+
+crawMzitu.py 爬取 [mzitu](http://www.mzitu.com/) 网站的妹子的图片，该网站有反爬虫，解决方式 请求头里添加**Reference**
+
+crawdi81.py 爬取 [di81美女网](http://di81.com/) 的妹子图片
 
 log.py 做日志输出处理。
 
