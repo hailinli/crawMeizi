@@ -35,7 +35,7 @@ mongodb主要负责数据库的链接，切换到表明，以及数据库的插�
 安装相关的依赖包，依赖包需求见文末的环境部分
 在mongoDb.py处配置数据库用户名和密码后，就可以运行代码了
 ```
-python xmCustom.py
+python xmCustomer.py
 ```
 
 -----
