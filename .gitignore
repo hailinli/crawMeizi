@@ -1,0 +1,9 @@
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+*.bak
+logs
+.DS_Store
+__pycache__
+.idea
