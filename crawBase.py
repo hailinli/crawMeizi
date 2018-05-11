@@ -58,6 +58,7 @@ class CrawMzBase:
         self._createPicDic()
         self.proxyOn = proxyOn  # 是否启用代理
         self._startProxy(proxyOn)
+        self.baseHeaders = {'User-Agent': random.choice(self.user)}  # 更新头
 
 
 
@@ -99,12 +100,11 @@ class CrawMzBase:
         :param fileName:
         :return:
         '''
-        headers = {'User-Agent': random.choice(self.user)}  # 更新头
         if self.proxyOn:
             proxyUse = self._getOneProxy()
-            r = requests.get(pngUri, params=params, headers=headers, proxies=proxyUse)
+            r = requests.get(pngUri, params=params, headers=self.baseHeaders, proxies=proxyUse)
         else:
-            r = requests.get(pngUri, params=params, headers=headers).content
+            r = requests.get(pngUri, params=params, headers=self.baseHeaders).content
         with open(fileName, 'wb') as code:
             code.write(r)
 
@@ -139,6 +139,7 @@ class CrawMzBase:
             logg.info(u'图片爬取成功: %s' %pngUri)
         else:
             logg.info(u'图片爬取失败: %s'% pngUri)
+
 
     def crawlRun(self):
         '''
