@@ -1,6 +1,12 @@
-# 利用python爬取一些网站的妹子图片
+# 爬取一些网站的图片、小说、视频
 
-本项目主要用于一些网站的妹子图片爬取，利用工厂模式编写，方便日后扩展。目前为初级版本，目前仅仅可以爬取 [di81美女网](http://di81.com/) 、[mzitu](http://www.mzitu.com/) 的图片，还有许多需要改进的地方，如免费代理模块未做可扩展处理、mongoDb安全性处理模块。该小项目会不定时更新，欢迎star
+------
+
+本项目主要用于一些网站的妹子图片爬取，以及某小视频网站的视频、小说，利用工厂模式编写，方便日后扩展。
+
+目前为初级版本，仅仅可以爬取 [di81美女网](http://di81.com/) 、[mzitu](http://www.mzitu.com/) 的图片；[001mao]()的图片、小说、视频（***001mao网站的链接不能给出，怕csdn屏蔽，欢迎去github，代码内有链接***）。
+
+还有许多需要改进的地方，如免费代理模块未做可扩展处理、mongoDb安全性处理模块。该小项目会不定时更新，欢迎star
 详细介绍，请看我的博客：https://blog.csdn.net/linhai1028/article/details/80280674
 
 ------
@@ -15,6 +21,12 @@ crawMzitu.py 爬取 [mzitu](http://www.mzitu.com/) 网站的妹子的图片，�
 
 crawdi81.py 爬取 [di81美女网](http://di81.com/) 的妹子图片
 
+craw001maoPic.y  爬取 [001mao]() 的妹子图片 
+
+craw001maoXs.py 爬取 [001mao]() 的小说
+
+craw001maoDy.py 爬取 [001mao]() 的小视频
+
 log.py 做日志输出处理。
 
 xmFactory.py 工厂模式中的工厂模块。
@@ -25,9 +37,23 @@ mongodb主要负责数据库的链接，切换到表明，以及数据库的插�
 
 ## 结果展示
 
-1.数据库展示
+### 1.数据库展示
 
-![这里写图片描述](pic/di81_1.png)
+di81数据库表结构展示
+![di81](pic/di81_1.png)
+
+mzitu数据库表结构展示
+![mzitu](pic/mzitu.png)
+
+001maoPic数据库表结构展示
+![mzitu](pic/001maoPic.png)
+
+001maoDy数据库表结构展示
+![mzitu](pic/001maoDy.png)
+
+001maoXs数据库表结构展示
+![mzitu](pic/001maoXs.png)
+
 
 2.图片展示
 
