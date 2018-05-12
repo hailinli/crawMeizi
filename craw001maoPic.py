@@ -35,7 +35,9 @@ class Craw001maoPic(crawBase.CrawMzBase):
             'User-Agent': random.choice(self.user),
             'Referer': self.baseUri
         }  # 更新头
-        r = requests.get(url, headers=self.headers, timeout=5).content  # 不要代理
+        r = self.get(url, headers=self.headers).content  # 不要代理
+        if r == False:
+            return []
         # print(r)
         sel = etree.HTML(r)
         classUris = sel.xpath("//li[@class='head-2a-list']/a/@href")
@@ -56,7 +58,9 @@ class Craw001maoPic(crawBase.CrawMzBase):
             'User-Agent': random.choice(self.user),
             'Referer': self.baseUri
         }  # 更新头
-        r = requests.get(url, headers=self.headers, timeout=5).content  # 不要代理
+        r = self.get(url, headers=self.headers, total=10).content  # 不要代理
+        if r == False:
+            return False
         # print(url)
         # print(r)
         sel = etree.HTML(r)
@@ -75,7 +79,9 @@ class Craw001maoPic(crawBase.CrawMzBase):
         #     'User-Agent': random.choice(self.user),
         #     'Referer': self.baseUri
         # }  # 更新头
-        r = requests.get(url, headers=self.headers, timeout=5).content  # 不要代理
+        r = self.get(url, headers=self.headers, total=10).content  # 不要代理
+        if r == False:
+            return [], []
         sel = etree.HTML(r)
         # print(r)
         picUris = sel.xpath('//div[@class="content"]/p/img/@src')
@@ -123,7 +129,9 @@ class Craw001maoPic(crawBase.CrawMzBase):
         :return:
         '''
         # 获取该类pic的总页数
-        r = requests.get(classUri, timeout=5).text  # 不要代理
+        r = self.get(classUri, {}, total=10).text  # 不要代理
+        if r == False:
+            return []
         e = etree.HTML(r)
         totalS = e.xpath('//div[@class="pagination"]')[0].text
         total = totalS.split('/')[1].replace(u'页', '')
