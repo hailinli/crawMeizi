@@ -8,6 +8,7 @@ import crawDi81
 import crawMzitu
 import craw001maoPic
 import craw001maoXs
+import craw001maoDy
 
 class FactoryBase:
     def __init__(self):
@@ -42,3 +43,12 @@ class Factory001maoXs:
 
     def creat001maoXs(self):
         return craw001maoXs.Craw001maoXs()
+
+
+class Factory001maoDy:
+    def __init__(self):
+        pass
+
+    def creat001maoDy(self):
+        return craw001maoDy.Craw001maoDy()
+
