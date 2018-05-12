@@ -9,6 +9,7 @@ import requests
 import log
 import logging
 import httpProxy
+import time
 log.initLogConf()
 logg = logging.getLogger(__file__)
 
@@ -139,6 +140,24 @@ class CrawMzBase:
             logg.info(u'图片爬取成功: %s' %pngUri)
         else:
             logg.info(u'图片爬取失败: %s'% pngUri)
+
+
+    def get(self, url, headers, total=3):
+        '''
+        安全的访问网页链接
+        :param url:
+        :param headers:
+        :return:
+        '''
+        try:
+            r = requests.get(url, headers=headers, timeout=5)
+        except Exception as e:
+            logg.warn(e)
+            if total>0:
+                time.sleep(5)
+                return self.get(url, headers, total-1)
+            return False
+        return r
 
 
     def crawlRun(self):
