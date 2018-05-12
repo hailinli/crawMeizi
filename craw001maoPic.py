@@ -86,7 +86,7 @@ class Craw001maoPic(crawBase.CrawMzBase):
         # print(r)
         picUris = sel.xpath('//div[@class="content"]/p/img/@src')
         picThirdDesc = sel.xpath('//span[@class="cat_pos_l"]/a')
-        picThirdDesc = os.path.join(self.picDictory, picThirdDesc[1].text, picThirdDesc[2].text)
+        picThirdDesc = os.path.join(self.picDictory, picThirdDesc[1].text.strip(), picThirdDesc[2].text.replace(' ', '').strip())
         # print(picUris)
         return picUris, picThirdDesc
 
@@ -114,7 +114,7 @@ class Craw001maoPic(crawBase.CrawMzBase):
                         os.system('mkdir -p %s' % thirdPicDesc)
                     for thirdPicUri in thirdPicUris:
                         print(thirdPicUri)
-                        name = thirdPicUri.split('/')[-1]
+                        name = thirdPicUri.split('/')[-1].strip()
                         f = os.path.join(thirdPicDesc, name)
                         self.logCrawPic(thirdPicUri, {}, f)
                         # break
