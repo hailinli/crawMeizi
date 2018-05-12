@@ -30,6 +30,7 @@ class Craw001maoXs(craw001maoPic.Craw001maoPic):
     def saveXs(self, url):
         '''
         保存小说
+        :param url:
         :return:
         '''
         r = requests.get(url, timeout=5).text  # 不要代理
@@ -62,6 +63,10 @@ class Craw001maoXs(craw001maoPic.Craw001maoPic):
 
 
     def engin(self):
+        '''
+
+        :return:
+        '''
         classUris = self.getFirstPage(self.startUri)
         for classUri in classUris[8:16]:  # 得到分类,前8个为图片
             # print(classUri)
