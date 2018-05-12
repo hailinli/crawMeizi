@@ -39,19 +39,19 @@ mongodb主要负责数据库的链接，切换到表明，以及数据库的插�
 
 ### 1.数据库展示
 
-di81数据库表结构展示
+di81网站图片数据库表结构展示
 ![di81](pic/di81_1.png)
 
-mzitu数据库表结构展示
+mzitu网站图片数据库表结构展示
 ![mzitu](pic/mzitu.png)
 
-001maoPic数据库表结构展示
+001maoPic网站图片数据库表结构展示
 ![mzitu](pic/001maoPic.png)
 
-001maoDy数据库表结构展示
+001maoDy网站小视频数据库表结构展示
 ![mzitu](pic/001maoDy.png)
 
-001maoXs数据库表结构展示
+001maoXs网站小说数据库表结构展示
 ![mzitu](pic/001maoXs.png)
 
 
