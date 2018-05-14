@@ -17,6 +17,7 @@ log.initLogConf()
 logg = logging.getLogger(__file__)
 import crawBase
 import mongoDb
+import re
 
 class Craw001maoPic(crawBase.CrawMzBase):
     def __init__(self):
@@ -69,6 +70,20 @@ class Craw001maoPic(crawBase.CrawMzBase):
         # print(picUris)
         return picUris
 
+    def getGoodDicName(self, sl):
+        '''
+        通过将网页中的得到etree对象解析,并组合得到正确的文件名
+        :param sl: list, 其元素为etree对象
+        :return:
+        '''
+        pattern = re.compile('[\u4e00-\u9fa5|[a-zA-Z\d]]*')
+        fisrtDic = sl[1].text.strip()
+        secondDic = ''.join(pattern.findall(sl[2].text))
+        s = os.path.join(self.picDictory, fisrtDic, secondDic)
+        return s
+
+
+
     def getThirdPagePic(self, url):
         '''
         获得最终的图片链接,可直接下载
@@ -86,7 +101,7 @@ class Craw001maoPic(crawBase.CrawMzBase):
         # print(r)
         picUris = sel.xpath('//div[@class="content"]/p/img/@src')
         picThirdDesc = sel.xpath('//span[@class="cat_pos_l"]/a')
-        picThirdDesc = os.path.join(self.picDictory, picThirdDesc[1].text.strip(), picThirdDesc[2].text.replace(' ', '').strip())
+        picThirdDesc = self.getGoodDicName(picThirdDesc)
         # print(picUris)
         return picUris, picThirdDesc
 
@@ -100,6 +115,7 @@ class Craw001maoPic(crawBase.CrawMzBase):
                 picUris = self.getSecondPagePic(classUriSub)
                 for picUri in picUris:
                     print(picUri)
+                    # 数据入库
                     thirdPicUris, thirdPicDesc = self.getThirdPagePic(picUri)
                     rd = {}
                     rd['id'] = self.num
@@ -110,6 +126,8 @@ class Craw001maoPic(crawBase.CrawMzBase):
                     rd['insertTime'] = insertTime
                     rd['urls'] = thirdPicUris
                     self.pic001maoInfo.insert(rd)
+
+                    # 下载图片
                     if not os.path.exists(thirdPicDesc):
                         os.system('mkdir -p %s' % thirdPicDesc)
                     for thirdPicUri in thirdPicUris:
