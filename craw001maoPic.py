@@ -117,6 +117,11 @@ class Craw001maoPic(crawBase.CrawMzBase):
                     print(picUri)
                     # 数据入库
                     thirdPicUris, thirdPicDesc = self.getThirdPagePic(picUri)
+                    # 下载图片
+                    if not os.path.exists(thirdPicDesc):  # 如果文件夹不存在表明,没下载过
+                        os.system('mkdir -p %s' % thirdPicDesc)
+                    else:  # 如果文件夹存在表明已经下载过该套图,这样新开进程不会下已经下载过的图片
+                        continue
                     rd = {}
                     rd['id'] = self.num
                     rd['class'] = thirdPicDesc.split('/')[1]
@@ -126,10 +131,6 @@ class Craw001maoPic(crawBase.CrawMzBase):
                     rd['insertTime'] = insertTime
                     rd['urls'] = thirdPicUris
                     self.pic001maoInfo.insert(rd)
-
-                    # 下载图片
-                    if not os.path.exists(thirdPicDesc):
-                        os.system('mkdir -p %s' % thirdPicDesc)
                     for thirdPicUri in thirdPicUris:
                         print(thirdPicUri)
                         name = thirdPicUri.split('/')[-1].strip()
