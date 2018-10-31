@@ -40,25 +40,25 @@ mongodb主要负责数据库的链接，切换到表明，以及数据库的插�
 ### 1.数据库展示
 
 di81网站图片数据库表结构展示
-![di81](pic/di81_1.png)
+![图片不给你看](pic/di81_1.pngbbb)
 
 mzitu网站图片数据库表结构展示
-![mzitu](pic/mzitu.png)
+![图片不给你看](pic/mzitu.pngbbb)
 
 001maoPic网站图片数据库表结构展示
-![mzitu](pic/001maoPic.png)
+![图片不给你看](pic/001maoPic.pngbbb)
 
 001maoDy网站小视频数据库表结构展示
-![mzitu](pic/001maoDy.png)
+![图片不给你看](pic/001maoDy.pngbbb)
 
 001maoXs网站小说数据库表结构展示
-![mzitu](pic/001maoXs.png)
+![图片不给你看](pic/001maoXs.pngbbb)
 
 
 2.图片展示
 
-![这里写图片描述](pic/di81_2.png)
-![这里写图片描述](pic/di81_3.png)
+![图片不给你看](pic/di81_2.pngbbb)
+![图片不给你看](pic/di81_3.pngbbb)
 
 ## 使用
 
